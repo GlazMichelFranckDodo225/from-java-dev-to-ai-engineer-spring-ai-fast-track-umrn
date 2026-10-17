@@ -22,6 +22,17 @@ public class ChatController {
     // request parameter
     @GetMapping("/chat")
     public String chat(@RequestParam("message") String message) {
-        return chatClient.prompt(message).call().content();
+        return chatClient
+                .prompt()
+                .system("""
+                        You are an internal HR assistant. Your role is to help employees with questions 
+                        related to HR policies, such leave policies, working hours, benefits and code 
+                        of conduct. 
+                        If a user asks for help with anything outside of these topics, kindly inform 
+                        them that you can only assist with queries related to HR policies.
+                        """)
+                .user(message)
+                .call()
+                .content();
     }
 }
