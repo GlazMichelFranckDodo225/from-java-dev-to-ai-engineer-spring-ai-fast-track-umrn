@@ -25,6 +25,7 @@ public class ChatController {
                         them that you can only assist with queries related to HR policies.
                         """
                 )
+                .defaultUser("How can you help me?")
                 .build();
     }
 
@@ -43,7 +44,7 @@ public class ChatController {
                         support tasks within your defined scope.
                         """
                 )
-                .user(message)
+                // .user(message)
                 .call()
                 .content();
     }
