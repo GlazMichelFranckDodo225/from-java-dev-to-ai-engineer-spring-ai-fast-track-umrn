@@ -44,7 +44,7 @@ public class ChatController {
                         support tasks within your defined scope.
                         """
                 )
-                // .user(message)
+                .user(message)
                 .call()
                 .content();
     }
